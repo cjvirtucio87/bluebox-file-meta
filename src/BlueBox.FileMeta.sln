@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bluebox.FileMeta.Api", ".\Bluebox.FileMeta.Api\Bluebox.FileMeta.Api.csproj", "{C23990CC-B09F-437D-98B9-34398F7774AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bluebox.FileMeta.Dto", ".\Bluebox.FileMeta.Dto\Bluebox.FileMeta.Dto.csproj", "{A6FDA748-CAEE-40DF-8348-5B16BEF43E69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bluebox.FileMeta.Impl", ".\Bluebox.FileMeta.Impl\Bluebox.FileMeta.Impl.csproj", "{9366CF3F-0434-4D4B-A9FD-85570CA3B97F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bluebox.FileMeta.Tests", ".\Bluebox.FileMeta.Tests\Bluebox.FileMeta.Tests.csproj", "{E570A1EC-117F-48CA-B30E-4EBB2332EC7C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bluebox.FileMeta.Tests.Integration", ".\Bluebox.FileMeta.Tests.Integration\Bluebox.FileMeta.Tests.Integration.csproj", "{BC66FD00-5A83-478C-B2BC-C77324777504}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C23990CC-B09F-437D-98B9-34398F7774AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23990CC-B09F-437D-98B9-34398F7774AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23990CC-B09F-437D-98B9-34398F7774AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23990CC-B09F-437D-98B9-34398F7774AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FDA748-CAEE-40DF-8348-5B16BEF43E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FDA748-CAEE-40DF-8348-5B16BEF43E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FDA748-CAEE-40DF-8348-5B16BEF43E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FDA748-CAEE-40DF-8348-5B16BEF43E69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9366CF3F-0434-4D4B-A9FD-85570CA3B97F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9366CF3F-0434-4D4B-A9FD-85570CA3B97F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9366CF3F-0434-4D4B-A9FD-85570CA3B97F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9366CF3F-0434-4D4B-A9FD-85570CA3B97F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E570A1EC-117F-48CA-B30E-4EBB2332EC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E570A1EC-117F-48CA-B30E-4EBB2332EC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E570A1EC-117F-48CA-B30E-4EBB2332EC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E570A1EC-117F-48CA-B30E-4EBB2332EC7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC66FD00-5A83-478C-B2BC-C77324777504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC66FD00-5A83-478C-B2BC-C77324777504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC66FD00-5A83-478C-B2BC-C77324777504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC66FD00-5A83-478C-B2BC-C77324777504}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CC4B190-C2B8-483E-A65C-499D9E349C64}
+	EndGlobalSection
+EndGlobal
