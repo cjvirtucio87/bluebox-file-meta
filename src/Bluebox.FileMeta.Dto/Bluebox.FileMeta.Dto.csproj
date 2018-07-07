@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Bluebox.FileMeta.Dto</AssemblyName>
+    <RootNamespace>Bluebox.FileMeta.Dto</RootNamespace>
+    <Version Condition=" '$(BUILD_NUMBER)' == '' ">1.0.0-local</Version>
+    <Version Condition=" '$(BUILD_NUMBER)' != '' ">1.0.$(BUILD_NUMBER)</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Bluebox.FileMeta.Dto.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>

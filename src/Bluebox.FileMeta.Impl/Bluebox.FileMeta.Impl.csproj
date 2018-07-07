@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Bluebox.FileMeta.Impl</AssemblyName>
+    <RootNamespace>Bluebox.FileMeta.Impl</RootNamespace>
+    <Version Condition=" '$(BUILD_NUMBER)' == '' ">1.0.0-local</Version>
+    <Version Condition=" '$(BUILD_NUMBER)' != '' ">1.0.$(BUILD_NUMBER)</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Bluebox.FileMeta.Impl.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>
