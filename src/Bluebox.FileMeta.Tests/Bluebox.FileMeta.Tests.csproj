@@ -12,4 +12,9 @@
     <DocumentationFile>bin\Debug\netstandard2.0\Bluebox.FileMeta.Tests.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlueBox.FileMeta.Api\BlueBox.FileMeta.Api.csproj" />
+    <ProjectReference Include="..\BlueBox.FileMeta.Dto\BlueBox.FileMeta.Dto.csproj" />
+    <ProjectReference Include="..\BlueBox.FileMeta.Impl\BlueBox.FileMeta.Impl.csproj" />
+  </ItemGroup>
 </Project>
