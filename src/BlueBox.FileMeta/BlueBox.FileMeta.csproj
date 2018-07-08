@@ -11,4 +11,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Bluebox.FileMeta.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlueBox.FileMeta.Api\BlueBox.FileMeta.Api.csproj" />
+    <ProjectReference Include="..\BlueBox.FileMeta.Dto\BlueBox.FileMeta.Dto.csproj" />
+  </ItemGroup>
 </Project>
