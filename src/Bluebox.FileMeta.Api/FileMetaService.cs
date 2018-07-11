@@ -13,5 +13,12 @@
         /// </para>
         /// </summary>
         void Create(Dto.File file);
+
+        /// <summary>
+        /// <para>
+        /// Get a journal record representing a file and its part list.
+        /// </para>
+        /// </summary>
+        Dto.File Get(int file);
     }
 }
