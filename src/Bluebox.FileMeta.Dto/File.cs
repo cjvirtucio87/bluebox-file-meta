@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Bluebox.FileMeta.Dto
+namespace BlueBox.FileMeta.Dto
 {
     /// <summary>
     /// <para>

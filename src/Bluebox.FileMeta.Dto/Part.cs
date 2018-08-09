@@ -1,4 +1,4 @@
-﻿namespace Bluebox.FileMeta.Dto
+﻿namespace BlueBox.FileMeta.Dto
 {
     public class Part
     {

@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Bluebox.FileMeta</AssemblyName>
-    <RootNamespace>Bluebox.FileMeta</RootNamespace>
+    <AssemblyName>BlueBox.FileMeta</AssemblyName>
+    <RootNamespace>BlueBox.FileMeta</RootNamespace>
     <Version Condition=" '$(BUILD_NUMBER)' == '' ">1.0.0-local</Version>
     <Version Condition=" '$(BUILD_NUMBER)' != '' ">1.0.$(BUILD_NUMBER)</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\Bluebox.FileMeta.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\BlueBox.FileMeta.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
