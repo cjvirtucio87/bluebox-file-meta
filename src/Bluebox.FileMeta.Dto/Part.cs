@@ -1,5 +1,10 @@
 ﻿namespace BlueBox.FileMeta.Dto
 {
+    /// <summary>
+    /// <para>
+    /// A partition of the <code>Dto.File</code>.
+    /// </para>
+    /// </summary>
     public class Part
     {
         /// <summary>

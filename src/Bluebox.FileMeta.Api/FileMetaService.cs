@@ -5,7 +5,7 @@
     /// Business logic pertaining to file metadata.
     /// </para>
     /// </summary>
-    public interface FileMetaService
+    public interface IFileMetaService
     {
         /// <summary>
         /// <para>
