@@ -19,5 +19,12 @@
         /// </para>
         /// </summary>
         public int FileId { get; }
+
+        /// <summary>
+        /// <para>
+        /// Identifier for the file part in the block servers.
+        /// </para>
+        /// </summary>
+        public string BlockId { get; }
     }
 }
