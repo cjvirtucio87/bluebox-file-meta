@@ -1,11 +1,11 @@
-﻿namespace Bluebox.FileMeta.Api
+﻿namespace BlueBox.FileMeta.Api
 {
     /// <summary>
     /// <para>
     /// Business logic pertaining to file metadata.
     /// </para>
     /// </summary>
-    public interface FileMetaService
+    public interface IFileMetaService
     {
         /// <summary>
         /// <para>

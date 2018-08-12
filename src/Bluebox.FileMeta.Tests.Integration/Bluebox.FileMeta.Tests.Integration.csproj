@@ -3,14 +3,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Bluebox.FileMeta.Tests.Integration</AssemblyName>
-    <RootNamespace>Bluebox.FileMeta.Tests.Integration</RootNamespace>
+    <AssemblyName>BlueBox.FileMeta.Tests.Integration</AssemblyName>
+    <RootNamespace>BlueBox.FileMeta.Tests.Integration</RootNamespace>
     <Version Condition=" '$(BUILD_NUMBER)' == '' ">1.0.0-local</Version>
     <Version Condition=" '$(BUILD_NUMBER)' != '' ">1.0.$(BUILD_NUMBER)</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\Bluebox.FileMeta.Tests.Integration.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\BlueBox.FileMeta.Tests.Integration.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>
