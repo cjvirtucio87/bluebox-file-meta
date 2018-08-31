@@ -19,11 +19,12 @@
         /// </para>
         /// </summary>
         public int FileId { get; }
+
         /// <summary>
         /// <para>
-        /// The encrypted hash representing the file part's fully-qualified namespace.
+        /// Identifier for the file part in the block servers.
         /// </para>
         /// </summary>
-        public string Hash { get; }
+        public string BlockId { get; }
     }
 }
