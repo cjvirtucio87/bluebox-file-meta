@@ -41,7 +41,6 @@ namespace BlueBox.FileMeta.Tests.Integration
         /// </summary>
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 }

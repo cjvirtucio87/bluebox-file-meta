@@ -30,7 +30,7 @@ namespace BlueBox.FileMeta.Tests.Integration
             [Fact]
             public void ShouldThrowExceptionOnNullFile()
             {
-                Assert.Throws<Exception>(() => fileMetaService.CreateFileRecord(null));
+                Assert.Throws<ArgumentException>(() => fileMetaService.CreateFileRecord(null));
             }
         }
     }
