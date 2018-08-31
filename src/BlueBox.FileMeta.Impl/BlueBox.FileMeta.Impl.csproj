@@ -12,4 +12,8 @@
     <DocumentationFile>bin\Debug\netstandard2.0\BlueBox.FileMeta.Impl.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlueBox.FileMeta.Api\BlueBox.FileMeta.Api.csproj" />
+  </ItemGroup>
+
 </Project>
