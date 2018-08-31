@@ -1,5 +1,6 @@
 using BlueBox.FileMeta.Api;
 using BlueBox.FileMeta.Dto;
+using System;
 
 namespace BlueBox.FileMeta.Impl
 {
@@ -11,7 +12,10 @@ namespace BlueBox.FileMeta.Impl
         /// <inheritxmldoc/>
         public void CreateFileRecord(File file)
         {
-            throw new System.NotImplementedException();
+            if (file == null)
+            {
+                throw new ArgumentException("File argument must not be null");
+            }
         }
 
         /// <inheritxmldoc/>

@@ -12,15 +12,16 @@ namespace BlueBox.FileMeta.Tests.Integration
         /// <summary>
         /// Integration test for the <code>Create</code> method.
         /// </summary>
-        public class CreateFileRecord
+        public class CreateFileRecord : IClassFixture<FileMetaServiceFixture>
         {
             private readonly IFileMetaService fileMetaService;
 
             /// <summary>
             /// Constructor.
             /// </summary>
-            public CreateFileRecord()
+            public CreateFileRecord(FileMetaServiceFixture fileMetaServiceFixture)
             {
+                fileMetaService = fileMetaServiceFixture.GetFileMetaService();
             }
 
             /// <summary>
