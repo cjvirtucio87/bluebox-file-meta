@@ -12,13 +12,13 @@
         /// Create a journal record representing a file and its part list.
         /// </para>
         /// </summary>
-        void Create(Dto.File file);
+        void CreateFileRecord(Dto.File file);
 
         /// <summary>
         /// <para>
         /// Get a journal record representing a file and its part list.
         /// </para>
         /// </summary>
-        Dto.File Get(int file);
+        Dto.File GetFileRecord(int file);
     }
 }
