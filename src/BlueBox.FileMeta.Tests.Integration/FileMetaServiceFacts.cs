@@ -1,5 +1,6 @@
 using BlueBox.FileMeta.Api;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace BlueBox.FileMeta.Tests.Integration
@@ -15,6 +16,7 @@ namespace BlueBox.FileMeta.Tests.Integration
         public class CreateFileRecord : IClassFixture<FileMetaServiceFixture>
         {
             private readonly IFileMetaService fileMetaService;
+            private readonly Dto.File file;
 
             /// <summary>
             /// Constructor.
@@ -22,6 +24,8 @@ namespace BlueBox.FileMeta.Tests.Integration
             public CreateFileRecord(FileMetaServiceFixture fileMetaServiceFixture)
             {
                 fileMetaService = fileMetaServiceFixture.GetFileMetaService();
+
+                file = fileMetaServiceFixture.GetFile();
             }
 
             /// <summary>
@@ -31,6 +35,34 @@ namespace BlueBox.FileMeta.Tests.Integration
             public void ShouldThrowExceptionOnNullFile()
             {
                 Assert.Throws<ArgumentException>(() => fileMetaService.CreateFileRecord(null));
+            }
+
+            /// <summary>
+            /// Record creation test.
+            /// </summary>
+            [Fact]
+            public void ShouldCreateFileRecord()
+            {
+                fileMetaService.CreateFileRecord(file);
+
+                Assert.All(
+                    file.Parts,
+                    expectedPart =>
+                    {
+                        Assert.All(
+                            fileMetaService.GetFileRecord(
+                                expectedPart.FileId
+                            ).Parts,
+                            actualPart =>
+                            {
+                                Assert.Equal(
+                                    expectedPart.BlockId,
+                                    actualPart.BlockId
+                                );
+                            }
+                        );
+                    }
+                );
             }
         }
     }

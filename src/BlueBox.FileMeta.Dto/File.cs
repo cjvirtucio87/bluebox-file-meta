@@ -13,12 +13,12 @@
         /// Identifier for the file.
         /// </para>
         /// </summary>
-        public int FileId { get; }
+        public int FileId { get; set; }
         /// <summary>
         /// <para>
         /// Part list.
         /// </para>
         /// </summary>
-        public List<Part> Parts { get; }
+        public List<Part> Parts { get; set; }
     }
 }

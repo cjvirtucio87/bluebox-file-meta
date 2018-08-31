@@ -12,19 +12,19 @@
         /// Identifier for a part.
         /// </para>
         /// </summary>
-        public int PartId { get; }
+        public int PartId { get; set; }
         /// <summary>
         /// <para>
         /// Identifier for the parent file.
         /// </para>
         /// </summary>
-        public int FileId { get; }
+        public int FileId { get; set; }
 
         /// <summary>
         /// <para>
         /// Identifier for the file part in the block servers.
         /// </para>
         /// </summary>
-        public string BlockId { get; }
+        public string BlockId { get; set; }
     }
 }

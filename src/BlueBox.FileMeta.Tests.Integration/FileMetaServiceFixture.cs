@@ -1,7 +1,9 @@
 ﻿using BlueBox.FileMeta.Api;
+using BlueBox.FileMeta.Dto;
 using BlueBox.FileMeta.Impl;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 
 namespace BlueBox.FileMeta.Tests.Integration
 {
@@ -15,7 +17,8 @@ namespace BlueBox.FileMeta.Tests.Integration
     /// </summary>
     public class FileMetaServiceFixture : IDisposable
     {
-        private IServiceProvider serviceProvider;
+        private readonly IServiceProvider serviceProvider;
+        private Dto.File file;
 
         /// <summary>
         /// Constructor
@@ -34,6 +37,32 @@ namespace BlueBox.FileMeta.Tests.Integration
         public IFileMetaService GetFileMetaService()
         {
             return serviceProvider.GetService<IFileMetaService>();
+        }
+
+        /// <summary>
+        /// Get the <code>Dto.File</code> containing File metadata.
+        /// </summary>
+        /// <returns></returns>
+        public Dto.File GetFile()
+        {
+            if (file == null)
+            {
+                file = new File
+                {
+                    FileId = 1,
+                    Parts = new List<Part>
+                    {
+                        new Part
+                        {
+                            PartId = 1,
+                            FileId = 1,
+                            BlockId = "DR21BDGFL%"
+                        }
+                    }
+                };
+            }
+
+            return file;
         }
 
         /// <summary>
