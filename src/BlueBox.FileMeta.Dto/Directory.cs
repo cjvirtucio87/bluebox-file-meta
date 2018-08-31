@@ -39,7 +39,7 @@
         /// Each child file can also be given the same name as other items of different types, such as <code>Dto.Namespace</code> or <code>Dto.Directory</code>.
         /// </para>
         /// </summary>
-        public Dictionary<string, Dto.File> ChildFiles { get; }
+        public Dictionary<string, File> ChildFiles { get; }
 
         /// <summary>
         /// <para>
