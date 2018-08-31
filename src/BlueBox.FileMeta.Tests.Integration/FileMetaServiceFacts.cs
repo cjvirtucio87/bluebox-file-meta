@@ -1,3 +1,7 @@
+using BlueBox.FileMeta.Api;
+using System;
+using Xunit;
+
 namespace BlueBox.FileMeta.Tests.Integration
 {
     /// <summary>
@@ -10,7 +14,23 @@ namespace BlueBox.FileMeta.Tests.Integration
         /// </summary>
         public class CreateFileRecord
         {
+            private readonly IFileMetaService fileMetaService;
 
+            /// <summary>
+            /// Constructor.
+            /// </summary>
+            public CreateFileRecord()
+            {
+            }
+
+            /// <summary>
+            /// Null check test.
+            /// </summary>
+            [Fact]
+            public void ShouldThrowExceptionOnNullFile()
+            {
+                Assert.Throws<Exception>(() => fileMetaService.CreateFileRecord(null));
+            }
         }
     }
 }
