@@ -2,7 +2,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Version Condition=" '$(BUILD_NUMBER)' == '' ">1.0.0-local</Version>
     <Version Condition=" '$(BUILD_NUMBER)' != '' ">1.0.$(BUILD_NUMBER)</Version>
@@ -13,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="*.json" />
+      <None Include="appsettings.json" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,10 +1,9 @@
-using BlueBox.FileMeta.Api;
-using System;
-using System.Collections.Generic;
-using Xunit;
-
 namespace BlueBox.FileMeta.Tests.Integration
 {
+    using BlueBox.FileMeta.Api;
+    using System;
+    using Xunit;
+
     /// <summary>
     /// Integration test for the <code>IFileMetaService</code>.
     /// </summary>

@@ -1,10 +1,9 @@
-using BlueBox.FileMeta.Api;
-using BlueBox.FileMeta.Dto;
-using Microsoft.Extensions.Options;
-using System;
-
 namespace BlueBox.FileMeta.Impl
 {
+    using BlueBox.FileMeta.Api;
+    using BlueBox.FileMeta.Dto;
+    using Microsoft.Extensions.Options;
+    using System;
 
     /// <inheritxmldoc/>
     public class FileMetaServiceImpl : IFileMetaService

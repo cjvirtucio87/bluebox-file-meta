@@ -1,13 +1,13 @@
-﻿using BlueBox.FileMeta.Api;
-using BlueBox.FileMeta.Dto;
-using BlueBox.FileMeta.Impl;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-
-namespace BlueBox.FileMeta.Tests.Integration
+﻿namespace BlueBox.FileMeta.Tests.Integration
 {
+    using BlueBox.FileMeta.Api;
+    using BlueBox.FileMeta.Dto;
+    using BlueBox.FileMeta.Impl;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// <para>
     /// Fixture class for the <code>FileMetaService</code> integration tests. 
@@ -30,7 +30,6 @@ namespace BlueBox.FileMeta.Tests.Integration
                 .AddOptions()
                 .Configure<FileMetaServiceSettings>(
                     fileMetaServiceSettings => new ConfigurationBuilder()
-                        .SetBasePath("")
                         .AddJsonFile("appsettings.json", false, false)
                         .Build()
                         .GetSection("FileMetaService")
