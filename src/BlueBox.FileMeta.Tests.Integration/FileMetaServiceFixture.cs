@@ -1,6 +1,7 @@
 ﻿using BlueBox.FileMeta.Api;
 using BlueBox.FileMeta.Dto;
 using BlueBox.FileMeta.Impl;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,14 @@ namespace BlueBox.FileMeta.Tests.Integration
         public FileMetaServiceFixture()
         {
             serviceProvider = new ServiceCollection()
+                .AddOptions()
+                .Configure<FileMetaServiceSettings>(
+                    fileMetaServiceSettings => new ConfigurationBuilder()
+                        .SetBasePath("")
+                        .AddJsonFile("appsettings.json", false, false)
+                        .Build()
+                        .GetSection("FileMetaService")
+                )
                 .AddSingleton<IFileMetaService, FileMetaServiceImpl>()
                 .BuildServiceProvider();
         }

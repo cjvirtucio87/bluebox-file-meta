@@ -2,9 +2,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>BlueBox.FileMeta.Tests.Integration</AssemblyName>
-    <RootNamespace>BlueBox.FileMeta.Tests.Integration</RootNamespace>
     <Version Condition=" '$(BUILD_NUMBER)' == '' ">1.0.0-local</Version>
     <Version Condition=" '$(BUILD_NUMBER)' != '' ">1.0.$(BUILD_NUMBER)</Version>
   </PropertyGroup>
@@ -14,7 +13,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />

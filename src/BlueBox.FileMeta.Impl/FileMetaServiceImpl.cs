@@ -1,5 +1,6 @@
 using BlueBox.FileMeta.Api;
 using BlueBox.FileMeta.Dto;
+using Microsoft.Extensions.Options;
 using System;
 
 namespace BlueBox.FileMeta.Impl
@@ -8,6 +9,16 @@ namespace BlueBox.FileMeta.Impl
     /// <inheritxmldoc/>
     public class FileMetaServiceImpl : IFileMetaService
     {
+        private readonly FileMetaServiceSettings fileMetaServiceSettings;
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="fileMetaServiceSettingsOptions">configuration settings for the <code>IFileMetaService</code></param>
+        public FileMetaServiceImpl(IOptions<FileMetaServiceSettings> fileMetaServiceSettingsOptions)
+        {
+            fileMetaServiceSettings = fileMetaServiceSettingsOptions.Value;
+        }
 
         /// <inheritxmldoc/>
         public void CreateFileRecord(File file)
