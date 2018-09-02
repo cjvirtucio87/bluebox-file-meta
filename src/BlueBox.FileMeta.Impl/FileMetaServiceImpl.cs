@@ -35,11 +35,15 @@ namespace BlueBox.FileMeta.Impl
             }
 
             using (var connection = new SqlConnection(fileMetaServiceSettings.DbConnectionString))
-            using (var transaction = connection.BeginTransaction())
             {
-                fileRepository.Create(file, connection);
+                connection.Open();
 
-                transaction.Commit();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    fileRepository.Create(file, connection);
+
+                    transaction.Commit();
+                }
             }
         }
 
