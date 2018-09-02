@@ -33,6 +33,7 @@
                         .AddJsonFile("appsettings.json", false, false)
                         .Build()
                         .GetSection("FileMetaService")
+                        .Bind(fileMetaServiceSettings)
                 )
                 .AddSingleton<IFileRepository, FileRepositoryImpl>()
                 .AddSingleton<IFileMetaService, FileMetaServiceImpl>()
