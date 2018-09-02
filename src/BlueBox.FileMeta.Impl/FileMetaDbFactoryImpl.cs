@@ -12,6 +12,7 @@
     public class FileMetaDbFactoryImpl : IFileMetaDbFactory
     {
         private readonly DbProviderFactory dbProviderFactory;
+        private readonly string connectionString;
 
         /// <summary>
         /// Constructor.
@@ -24,12 +25,16 @@
             dbProviderFactory = ResolveDbFactory(
                 fileMetaServiceSettingsOptions.Value.DbProviderName
             );
+            connectionString = fileMetaServiceSettingsOptions.Value.DbConnectionString;
         }
 
         /// <inheritxmldoc/>
         public IDbConnection CreateConnection()
         {
-            return dbProviderFactory.CreateConnection();
+            var connection = dbProviderFactory.CreateConnection();
+            connection.ConnectionString = connectionString;
+
+            return connection;
         }
 
         private DbProviderFactory ResolveDbFactory(string providerName)
