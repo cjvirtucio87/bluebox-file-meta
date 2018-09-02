@@ -9,20 +9,20 @@ namespace BlueBox.FileMeta.Impl
     /// <inheritxmldoc/>
     public class FileMetaServiceImpl : IFileMetaService
     {
-        private readonly FileMetaServiceSettings fileMetaServiceSettings;
+        private readonly IFileMetaDbFactory fileMetaDbFactory;
         private readonly IFileRepository fileRepository;
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="fileMetaServiceSettingsOptions">configuration options</param>
+        /// <param name="fileMetaDbFactory">factory class for creating database connections</param>
         /// <param name="fileRepository">the domain repository for interacting with the databse for <code>File</code> information</param>
         public FileMetaServiceImpl(
-            IOptions<FileMetaServiceSettings> fileMetaServiceSettingsOptions,
+            IFileMetaDbFactory fileMetaDbFactory,
             IFileRepository fileRepository
         )
         {
-            fileMetaServiceSettings = fileMetaServiceSettingsOptions.Value;
+            this.fileMetaDbFactory = fileMetaDbFactory;
             this.fileRepository = fileRepository;
         }
 
@@ -34,15 +34,21 @@ namespace BlueBox.FileMeta.Impl
                 throw new ArgumentException("File argument must not be null");
             }
 
-            using (var connection = new SqlConnection(fileMetaServiceSettings.DbConnectionString))
+            using (var connection = fileMetaDbFactory.CreateConnection())
             {
                 connection.Open();
 
                 using (var transaction = connection.BeginTransaction())
                 {
-                    fileRepository.Create(file, connection);
+                    try
+                    {
+                        fileRepository.Create(file, connection);
 
-                    transaction.Commit();
+                        transaction.Commit();
+                    } finally
+                    {
+                        transaction.Rollback();
+                    }
                 }
             }
         }

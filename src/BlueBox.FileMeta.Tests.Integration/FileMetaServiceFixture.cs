@@ -19,7 +19,7 @@
     public class FileMetaServiceFixture : IDisposable
     {
         private readonly IServiceProvider serviceProvider;
-        private Dto.File file;
+        private File file;
 
         /// <summary>
         /// Constructor
@@ -35,6 +35,7 @@
                         .GetSection("FileMetaService")
                         .Bind(fileMetaServiceSettings)
                 )
+                .AddSingleton<IFileMetaDbFactory, FileMetaDbFactoryImpl>()
                 .AddSingleton<IFileRepository, FileRepositoryImpl>()
                 .AddSingleton<IFileMetaService, FileMetaServiceImpl>()
                 .BuildServiceProvider();
@@ -53,7 +54,7 @@
         /// Get the <code>Dto.File</code> containing File metadata.
         /// </summary>
         /// <returns></returns>
-        public Dto.File GetFile()
+        public File GetFile()
         {
             if (file == null)
             {
