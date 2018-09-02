@@ -2,29 +2,25 @@
 {
     using BlueBox.FileMeta.Api;
     using BlueBox.FileMeta.Dto;
-    using Microsoft.Extensions.Options;
+    using Dapper;
     using System;
+    using System.Data;
 
     /// <inheritxmldoc/>
     public class FileRepositoryImpl : IFileRepository
     {
-        private readonly FileMetaServiceSettings fileMetaServiceSettings;
-
-        /// <param name="fileMetaServiceSettingsOptions">configuration settings for the <code>IFileMetaService</code></param>
-        public FileRepositoryImpl(
-            IOptions<FileMetaServiceSettings> fileMetaServiceSettingsOptions
-        )
-        {
-            fileMetaServiceSettings = fileMetaServiceSettingsOptions.Value;
-        }
-
         /// <inheritxmldoc/>
-        public void Create(File file)
+        public void Create(File file, IDbConnection connection)
         {
             if (file == null)
             {
                 throw new ArgumentException("File cannot be null");
             }
+
+            connection.Execute(
+                @"insert into file (Id) values (@Id);",
+                file
+            );
         }
     }
 }

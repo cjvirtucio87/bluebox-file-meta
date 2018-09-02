@@ -34,6 +34,7 @@
                         .Build()
                         .GetSection("FileMetaService")
                 )
+                .AddSingleton<IFileRepository, FileRepositoryImpl>()
                 .AddSingleton<IFileMetaService, FileMetaServiceImpl>()
                 .BuildServiceProvider();
         }
