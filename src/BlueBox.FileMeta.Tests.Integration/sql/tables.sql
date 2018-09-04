@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS file;
+CREATE TABLE file (
+    Id PRIMARY KEY
+)

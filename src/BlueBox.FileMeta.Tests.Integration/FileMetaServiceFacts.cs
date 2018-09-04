@@ -2,6 +2,7 @@ namespace BlueBox.FileMeta.Tests.Integration
 {
     using BlueBox.FileMeta.Api;
     using System;
+    using System.IO;
     using Xunit;
 
     /// <summary>
@@ -25,6 +26,17 @@ namespace BlueBox.FileMeta.Tests.Integration
                 fileMetaService = fileMetaServiceFixture.GetFileMetaService();
 
                 file = fileMetaServiceFixture.GetFile();
+
+                using (var stream = fileMetaServiceFixture.GetSqlScript("tables.sql"))
+                using (var connection = fileMetaServiceFixture
+                                            .GetFileMetaDbFactory()
+                                            .CreateConnection())
+                {
+                    TestUtil.ExecuteSql(
+                        new StreamReader(stream).ReadToEnd(),
+                        connection
+                    );
+                }
             }
 
             /// <summary>

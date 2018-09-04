@@ -7,6 +7,9 @@
     using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
 
     /// <summary>
     /// <para>
@@ -19,7 +22,7 @@
     public class FileMetaServiceFixture : IDisposable
     {
         private readonly IServiceProvider serviceProvider;
-        private File file;
+        private Dto.File file;
 
         /// <summary>
         /// Constructor
@@ -35,6 +38,8 @@
                         .GetSection("FileMetaService")
                         .Bind(fileMetaServiceSettings)
                 )
+                .AddSingleton(Assembly.GetExecutingAssembly())
+                .AddSingleton<IEmbeddedResourceResolver, EmbeddedResourceResolver>()
                 .AddSingleton<IFileMetaDbFactory, FileMetaDbFactoryImpl>()
                 .AddSingleton<IFileRepository, FileRepositoryImpl>()
                 .AddSingleton<IFileMetaService, FileMetaServiceImpl>()
@@ -42,9 +47,18 @@
         }
 
         /// <summary>
+        /// Retrieve an instance of the <code>IFileMetaDbFactory</code> implementation.
+        /// </summary>
+        /// <returns>an instance of the <code>IFileMetaDbFactory</code> implementation</returns>
+        public IFileMetaDbFactory GetFileMetaDbFactory()
+        {
+            return serviceProvider.GetService<IFileMetaDbFactory>();
+        }
+
+        /// <summary>
         /// Retrieve an instance of the <code>IFileMetaService</code> implementation.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>an implementation of <code>IFileMetaService</code></returns>
         public IFileMetaService GetFileMetaService()
         {
             return serviceProvider.GetService<IFileMetaService>();
@@ -53,12 +67,12 @@
         /// <summary>
         /// Get the <code>Dto.File</code> containing File metadata.
         /// </summary>
-        /// <returns></returns>
-        public File GetFile()
+        /// <returns>a singleton instance of <code>Dto.File</code></returns>
+        public Dto.File GetFile()
         {
             if (file == null)
             {
-                file = new File
+                file = new Dto.File
                 {
                     FileId = 1,
                     Parts = new List<Part>
@@ -74,6 +88,17 @@
             }
 
             return file;
+        }
+
+        /// <summary>
+        /// Retrieve the file stream for an embedded SQL script.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>the <code>Stream</code> for the embedded SQL script</returns>
+        public Stream GetSqlScript(string name)
+        {
+            return serviceProvider.GetService<IEmbeddedResourceResolver>()
+                        .GetStream($"sql/{name}");
         }
 
         /// <summary>

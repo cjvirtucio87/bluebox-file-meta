@@ -12,7 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <None Include="appsettings.json" CopyToOutputDirectory="Always" />
+    <None Include="appsettings.json" CopyToOutputDirectory="Always" />
+    <EmbeddedResource Include="sql\**" />
   </ItemGroup>
 
   <ItemGroup>
