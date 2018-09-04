@@ -8,7 +8,6 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Reflection;
 
     /// <summary>
@@ -22,6 +21,8 @@
     public class FileMetaServiceFixture : IDisposable
     {
         private readonly IServiceProvider serviceProvider;
+        private readonly IEmbeddedResourceResolver embeddedResourceResolver;
+        private readonly IFileMetaDbFactory fileMetaDbFactory;
         private Dto.File file;
 
         /// <summary>
@@ -44,15 +45,21 @@
                 .AddSingleton<IFileRepository, FileRepositoryImpl>()
                 .AddSingleton<IFileMetaService, FileMetaServiceImpl>()
                 .BuildServiceProvider();
-        }
 
-        /// <summary>
-        /// Retrieve an instance of the <code>IFileMetaDbFactory</code> implementation.
-        /// </summary>
-        /// <returns>an instance of the <code>IFileMetaDbFactory</code> implementation</returns>
-        public IFileMetaDbFactory GetFileMetaDbFactory()
-        {
-            return serviceProvider.GetService<IFileMetaDbFactory>();
+            embeddedResourceResolver = serviceProvider.GetService<IEmbeddedResourceResolver>();
+            fileMetaDbFactory = serviceProvider.GetService<IFileMetaDbFactory>();
+
+            using (var stream = embeddedResourceResolver.GetStream($"sql/init.sql"))
+            using (var connection = fileMetaDbFactory.CreateConnection())
+            {
+                connection.Open();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = new StreamReader(stream).ReadToEnd();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         /// <summary>
@@ -97,8 +104,7 @@
         /// <returns>the <code>Stream</code> for the embedded SQL script</returns>
         public Stream GetSqlScript(string name)
         {
-            return serviceProvider.GetService<IEmbeddedResourceResolver>()
-                        .GetStream($"sql/{name}");
+            return embeddedResourceResolver.GetStream($"sql/{name}");
         }
 
         /// <summary>
@@ -106,6 +112,17 @@
         /// </summary>
         public void Dispose()
         {
+            using (var stream = embeddedResourceResolver.GetStream($"sql/cleanup.sql"))
+            using (var connection = fileMetaDbFactory.CreateConnection())
+            {
+                connection.Open();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = new StreamReader(stream).ReadToEnd();
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
