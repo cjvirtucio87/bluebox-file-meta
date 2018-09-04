@@ -32,6 +32,8 @@ namespace BlueBox.FileMeta.Tests.Integration
                                             .GetFileMetaDbFactory()
                                             .CreateConnection())
                 {
+                    connection.Open();
+
                     TestUtil.ExecuteSql(
                         new StreamReader(stream).ReadToEnd(),
                         connection
