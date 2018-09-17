@@ -3,6 +3,7 @@
     using BlueBox.FileMeta.Api;
     using BlueBox.FileMeta.Dto;
     using BlueBox.FileMeta.Impl;
+    using Dapper;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using System;
@@ -81,13 +82,12 @@
             {
                 file = new Dto.File
                 {
-                    FileId = 1,
+                    Id = 1,
                     Parts = new List<Part>
                     {
                         new Part
                         {
-                            PartId = 1,
-                            FileId = 1,
+                            Id = 1,
                             BlockId = "DR21BDGFL%"
                         }
                     }

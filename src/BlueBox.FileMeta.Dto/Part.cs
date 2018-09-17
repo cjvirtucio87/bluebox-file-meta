@@ -12,13 +12,7 @@
         /// Identifier for a part.
         /// </para>
         /// </summary>
-        public int PartId { get; set; }
-        /// <summary>
-        /// <para>
-        /// Identifier for the parent file.
-        /// </para>
-        /// </summary>
-        public int FileId { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// <para>

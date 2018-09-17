@@ -9,6 +9,7 @@
     /// <inheritxmldoc/>
     public class FileRepositoryImpl : IFileRepository
     {
+
         /// <inheritxmldoc/>
         public void Create(File file, IDbConnection connection)
         {

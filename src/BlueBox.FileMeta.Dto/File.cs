@@ -13,7 +13,7 @@
         /// Identifier for the file.
         /// </para>
         /// </summary>
-        public int FileId { get; set; }
+        public int Id { get; set; }
         /// <summary>
         /// <para>
         /// Part list.

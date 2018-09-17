@@ -1,4 +1,4 @@
 DROP TABLE IF EXISTS file;
 CREATE TABLE file (
     Id INT PRIMARY KEY
-)
+);

@@ -45,9 +45,11 @@ namespace BlueBox.FileMeta.Impl
                         fileRepository.Create(file, connection);
 
                         transaction.Commit();
-                    } finally
+                    } catch (Exception e)
                     {
                         transaction.Rollback();
+
+                        throw new Exception(e.Message);
                     }
                 }
             }

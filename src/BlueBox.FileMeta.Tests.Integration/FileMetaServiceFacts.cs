@@ -50,7 +50,7 @@ namespace BlueBox.FileMeta.Tests.Integration
                     {
                         Assert.All(
                             fileMetaService.GetFileRecord(
-                                expectedPart.FileId
+                                file.Id
                             ).Parts,
                             actualPart =>
                             {

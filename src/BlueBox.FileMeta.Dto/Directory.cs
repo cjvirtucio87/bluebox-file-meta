@@ -13,7 +13,7 @@
         /// Identifier for a particular directory.
         /// </para>
         /// </summary>
-        public int DirectoryId { get; }
+        public int Id { get; }
 
         /// <summary>
         /// <para>

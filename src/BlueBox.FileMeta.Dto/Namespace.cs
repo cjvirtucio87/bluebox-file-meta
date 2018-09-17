@@ -13,7 +13,7 @@
         /// Identifier for the file.
         /// </para>
         /// </summary>
-        public int NamespaceId { get; }
+        public int Id { get; }
 
         /// <summary>
         /// <para>
