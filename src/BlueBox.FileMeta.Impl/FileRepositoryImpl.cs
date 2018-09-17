@@ -23,5 +23,11 @@
                 file
             );
         }
+
+        /// <inheritxmldoc/>
+        public File Get(int fileId, IDbConnection connection)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

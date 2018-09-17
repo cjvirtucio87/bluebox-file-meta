@@ -63,7 +63,23 @@ namespace BlueBox.FileMeta.Impl
                 throw new ArgumentException("File argument must not be null");
             }
 
-            throw new NotImplementedException();
+            using (var connection = fileMetaDbFactory.CreateConnection())
+            {
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        return fileRepository.Get(fileId, connection);
+                    } catch (Exception e)
+                    {
+                        transaction.Rollback();
+
+                        throw new Exception(e.Message);
+                    }
+                }
+            }
         }
     }
 }
