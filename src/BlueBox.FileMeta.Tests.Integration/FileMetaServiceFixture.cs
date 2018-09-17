@@ -3,7 +3,6 @@
     using BlueBox.FileMeta.Api;
     using BlueBox.FileMeta.Dto;
     using BlueBox.FileMeta.Impl;
-    using Dapper;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using System;
