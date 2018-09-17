@@ -56,8 +56,13 @@ namespace BlueBox.FileMeta.Impl
         }
 
         /// <inheritxmldoc/>
-        public File GetFileRecord(int file)
+        public File GetFileRecord(int fileId)
         {
+            if (fileId.Equals(null))
+            {
+                throw new ArgumentException("File argument must not be null");
+            }
+
             throw new NotImplementedException();
         }
     }

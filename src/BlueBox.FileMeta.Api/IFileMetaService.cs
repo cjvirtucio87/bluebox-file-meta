@@ -19,6 +19,6 @@
         /// Get a journal record representing a file and its part list.
         /// </para>
         /// </summary>
-        Dto.File GetFileRecord(int file);
+        Dto.File GetFileRecord(int fileId);
     }
 }
