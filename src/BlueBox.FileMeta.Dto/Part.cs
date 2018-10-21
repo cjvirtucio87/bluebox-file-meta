@@ -1,4 +1,4 @@
-﻿namespace BlueBox.FileMeta.Dto
+namespace BlueBox.FileMeta.Dto
 {
     /// <summary>
     /// <para>

@@ -1,4 +1,4 @@
-﻿namespace BlueBox.FileMeta.Dto
+namespace BlueBox.FileMeta.Dto
 {
     using System.Collections.Generic;
     /// <summary>

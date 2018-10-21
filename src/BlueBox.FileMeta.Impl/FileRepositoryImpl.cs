@@ -1,4 +1,4 @@
-﻿namespace BlueBox.FileMeta.Impl
+namespace BlueBox.FileMeta.Impl
 {
     using BlueBox.FileMeta.Api;
     using BlueBox.FileMeta.Dto;

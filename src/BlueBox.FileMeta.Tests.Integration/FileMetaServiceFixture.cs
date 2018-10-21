@@ -1,4 +1,4 @@
-﻿namespace BlueBox.FileMeta.Tests.Integration
+namespace BlueBox.FileMeta.Tests.Integration
 {
     using BlueBox.FileMeta.Api;
     using BlueBox.FileMeta.Dto;

@@ -1,4 +1,4 @@
-﻿namespace BlueBox.FileMeta.Impl
+namespace BlueBox.FileMeta.Impl
 {
     using System;
     using System.Data;
