@@ -12,6 +12,7 @@ namespace BlueBox.FileMeta.Api
         /// Create a new <code>File</code> in the database.
         /// </summary>
         /// <param name="file">the file to persist</param>
+        /// <param name="connection">the connection to persist</param>
 
         void Create(Dto.File file, IDbConnection connection);
 
