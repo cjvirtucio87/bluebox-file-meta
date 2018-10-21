@@ -27,7 +27,12 @@ namespace BlueBox.FileMeta.Impl
         /// <inheritxmldoc/>
         public File Get(int fileId, IDbConnection connection)
         {
-            throw new NotImplementedException();
+            return connection.QueryFirst<File>(
+                "select * from file where file.id = @Id",
+                new {
+                    @Id = fileId
+                }
+            );
         }
     }
 }
