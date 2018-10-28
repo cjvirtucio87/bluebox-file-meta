@@ -1,4 +1,14 @@
 DROP TABLE IF EXISTS file;
+DROP TABLE IF EXISTS part;
+
 CREATE TABLE file (
     Id INT PRIMARY KEY
+);
+CREATE TABLE part (
+    Id INT PRIMARY KEY,
+    FileId INT,
+    FOREIGN KEY (FileId)
+        REFERENCES file(Id)
+        ON DELETE CASCADE,
+    BlockId VARCHAR(255)
 );
