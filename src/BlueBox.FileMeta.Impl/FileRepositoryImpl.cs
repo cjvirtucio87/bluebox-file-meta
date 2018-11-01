@@ -22,6 +22,17 @@ namespace BlueBox.FileMeta.Impl
                 @"insert into file (Id) values (@Id);",
                 file
             );
+
+            foreach (var part in file.Parts) {
+                connection.Execute(
+                    @"insert into part (Id, FileId, BlockId) values (@Id, @FileId, @BlockId)",
+                    new {
+                        Id = part.Id,
+                        FileId = file.Id,
+                        BlockId = part.BlockId
+                    }
+                );
+            }
         }
 
         /// <inheritxmldoc/>
