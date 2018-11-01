@@ -28,7 +28,12 @@ namespace BlueBox.FileMeta.Impl
         public File Get(int fileId, IDbConnection connection)
         {
             return connection.QueryFirst<File>(
-                "select * from file where file.id = @Id",
+                string.Join(
+                    "\n",
+                    "select * ",
+                    "from file join part on part.FileId = file.Id ",
+                    "where file.id = @Id;"
+                ),
                 new {
                     @Id = fileId
                 }
