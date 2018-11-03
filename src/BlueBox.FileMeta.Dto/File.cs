@@ -19,6 +19,6 @@ namespace BlueBox.FileMeta.Dto
         /// Part list.
         /// </para>
         /// </summary>
-        public List<Part> Parts { get; set; }
+        public List<Part> Parts { get; set; } = new List<Part>();
     }
 }
