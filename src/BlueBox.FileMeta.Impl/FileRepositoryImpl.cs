@@ -39,7 +39,9 @@ namespace BlueBox.FileMeta.Impl
         /// <inheritxmldoc/>
         public File Get(int fileId, IDbConnection connection)
         {
-            return connection.Query<File, Part, File>(
+            File resultFile = null;
+            
+            connection.Query<File, Part, File>(
                 string.Join(
                     "\n",
                     "select * ",
@@ -47,14 +49,20 @@ namespace BlueBox.FileMeta.Impl
                     "where file.id = @Id;"
                 ),
                 (file, part) => {
-                    file.Parts.Add(part);
+                    if (resultFile == null) {
+                        resultFile = file;
+                    }
+
+                    resultFile.Parts.Add(part);
 
                     return file;
                 },
                 new {
                     @Id = fileId
                 }
-            ).First();
+            );
+
+            return resultFile;
         }
     }
 }
