@@ -5,6 +5,7 @@ namespace BlueBox.FileMeta.Impl
     using Dapper;
     using System;
     using System.Data;
+    using System.Linq;
 
     /// <inheritxmldoc/>
     public class FileRepositoryImpl : IFileRepository
@@ -38,17 +39,22 @@ namespace BlueBox.FileMeta.Impl
         /// <inheritxmldoc/>
         public File Get(int fileId, IDbConnection connection)
         {
-            return connection.QueryFirst<File>(
+            return connection.Query<File, Part, File>(
                 string.Join(
                     "\n",
                     "select * ",
                     "from file join part on part.FileId = file.Id ",
                     "where file.id = @Id;"
                 ),
+                (file, part) => {
+                    file.Parts.Add(part);
+
+                    return file;
+                },
                 new {
                     @Id = fileId
                 }
-            );
+            ).First();
         }
     }
 }
