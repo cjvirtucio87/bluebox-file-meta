@@ -44,24 +44,16 @@ namespace BlueBox.FileMeta.Tests.Integration
             {
                 fileMetaService.CreateFileRecord(file);
 
-                Assert.All(
-                    file.Parts,
-                    expectedPart =>
-                    {
-                        Assert.All(
-                            fileMetaService.GetFileRecord(
-                                file.Id
-                            ).Parts,
-                            actualPart =>
-                            {
-                                Assert.Equal(
-                                    expectedPart.BlockId,
-                                    actualPart.BlockId
-                                );
-                            }
-                        );
-                    }
-                );
+                for (var i = 0; i < file.Parts.Count; i++) {
+                    var actualParts = fileMetaService.GetFileRecord(
+                        file.Id
+                    ).Parts;
+
+                    Assert.Equal(
+                        file.Parts[i].BlockId,
+                        actualParts[i].BlockId
+                    );
+                }
             }
         }
     }
