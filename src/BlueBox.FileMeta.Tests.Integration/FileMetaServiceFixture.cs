@@ -88,6 +88,14 @@ namespace BlueBox.FileMeta.Tests.Integration
                         {
                             Id = 1,
                             BlockId = "DR21BDGFL%"
+                        },
+                        new Part {
+                            Id = 2,
+                            BlockId = "MQ59AN34"
+                        },
+                        new Part {
+                            Id = 3,
+                            BlockId = "2PSO90FNB5"
                         }
                     }
                 };
