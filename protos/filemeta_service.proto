@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+// Request for metadata about a file with a given ID.
+message FileRequest {
+  int32 Id = 1;
+}
+
+// Service for performing CRUD operations on the File domain.
+service FileMetaService {
+  // Retrieve metadata about a file with a given ID.
+  rpc GetFileRecord(FileRequest) returns (File) {}
+}
