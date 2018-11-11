@@ -44,11 +44,11 @@ namespace BlueBox.FileMeta.Tests.Integration
             {
                 fileMetaService.CreateFileRecord(file);
 
-                for (var i = 0; i < file.Parts.Count; i++) {
-                    var actualParts = fileMetaService.GetFileRecord(
-                        file.Id
-                    ).Parts;
+                var actualParts = fileMetaService.GetFileRecord(
+                    file.Id
+                ).Parts;
 
+                for (var i = 0; i < file.Parts.Count; i++) {
                     Assert.Equal(
                         file.Parts[i].BlockId,
                         actualParts[i].BlockId
