@@ -1,9 +1,8 @@
-namespace BlueBox.FileMeta.Impl
+namespace BlueBox.FileMeta.Resources
 {
     using System.IO;
     using System.Linq;
     using System.Reflection;
-    using BlueBox.FileMeta.Api;
 
     /// <inheritxmldoc/>
     public class EmbeddedResourceResolver : IEmbeddedResourceResolver

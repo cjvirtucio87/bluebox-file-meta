@@ -28,8 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlueBox.FileMeta.Api\BlueBox.FileMeta.Api.csproj" /> 
-    <ProjectReference Include="..\BlueBox.FileMeta.Impl\BlueBox.FileMeta.Impl.csproj" /> 
+    <ProjectReference Include="..\BlueBox.FileMeta.Resources\BlueBox.FileMeta.Resources.csproj" /> 
     <ProjectReference Include="..\BlueBox.FileMeta.Service\BlueBox.FileMeta.Service.csproj" /> 
     <ProjectReference Include="..\BlueBox.FileMeta.Sql\BlueBox.FileMeta.Sql.csproj" /> 
   </ItemGroup>

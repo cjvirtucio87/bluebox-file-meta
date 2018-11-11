@@ -3,13 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueBox.FileMeta.Api", "BlueBox.FileMeta.Api\BlueBox.FileMeta.Api.csproj", "{C23990CC-B09F-437D-98B9-34398F7774AC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueBox.FileMeta.Dto", "BlueBox.FileMeta.Dto\BlueBox.FileMeta.Dto.csproj", "{A6FDA748-CAEE-40DF-8348-5B16BEF43E69}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueBox.FileMeta.Impl", "BlueBox.FileMeta.Impl\BlueBox.FileMeta.Impl.csproj", "{9366CF3F-0434-4D4B-A9FD-85570CA3B97F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueBox.FileMeta.Tests", "BlueBox.FileMeta.Tests\BlueBox.FileMeta.Tests.csproj", "{E570A1EC-117F-48CA-B30E-4EBB2332EC7C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueBox.FileMeta.Tests.Integration", "BlueBox.FileMeta.Tests.Integration\BlueBox.FileMeta.Tests.Integration.csproj", "{BC66FD00-5A83-478C-B2BC-C77324777504}"
 EndProject

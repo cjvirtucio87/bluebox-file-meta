@@ -1,8 +1,7 @@
 namespace BlueBox.FileMeta.Tests.Integration
 {
-    using BlueBox.FileMeta.Api;
     using BlueBox.FileMeta.Dto;
-    using BlueBox.FileMeta.Impl;
+    using BlueBox.FileMeta.Resources;
     using BlueBox.FileMeta.Service;
     using BlueBox.FileMeta.Sql;
     using Microsoft.Extensions.Configuration;
