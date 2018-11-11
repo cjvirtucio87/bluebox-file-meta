@@ -1,7 +1,7 @@
-using System.Data;
-
-namespace BlueBox.FileMeta.Api
+namespace BlueBox.FileMeta.Sql
 {
+    using System.Data;
+
     /// <summary>
     /// <para>Domain object for persisting/retrieving <code>File</code> information.</para>
     /// <para>If the method takes an instance of <code>IDbConnection</code>, then the connection is assumed to be open.</para>

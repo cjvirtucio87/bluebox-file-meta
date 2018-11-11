@@ -1,4 +1,4 @@
-namespace BlueBox.FileMeta.Api
+namespace BlueBox.FileMeta.Service
 {
     /// <summary>
     /// <para>

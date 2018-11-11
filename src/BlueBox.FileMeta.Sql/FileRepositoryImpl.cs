@@ -1,6 +1,6 @@
-namespace BlueBox.FileMeta.Impl
+namespace BlueBox.FileMeta.Sql
 {
-    using BlueBox.FileMeta.Api;
+    using BlueBox.FileMeta.Sql;
     using BlueBox.FileMeta.Dto;
     using Dapper;
     using System;

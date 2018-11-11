@@ -1,6 +1,6 @@
-namespace BlueBox.FileMeta.Impl
+namespace BlueBox.FileMeta.Service
 {
-    using BlueBox.FileMeta.Api;
+    using BlueBox.FileMeta.Sql;
     using BlueBox.FileMeta.Dto;
     using Microsoft.Extensions.Options;
     using System;

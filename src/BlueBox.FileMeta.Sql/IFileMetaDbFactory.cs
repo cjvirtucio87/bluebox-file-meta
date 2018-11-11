@@ -1,4 +1,4 @@
-namespace BlueBox.FileMeta.Api
+namespace BlueBox.FileMeta.Sql
 {
     using System.Data;
 

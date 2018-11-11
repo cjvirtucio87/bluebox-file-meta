@@ -1,6 +1,7 @@
 namespace BlueBox.FileMeta.Tests.Integration
 {
     using BlueBox.FileMeta.Api;
+    using BlueBox.FileMeta.Service;
     using System;
     using Xunit;
 

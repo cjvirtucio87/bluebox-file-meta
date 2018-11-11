@@ -1,9 +1,8 @@
-namespace BlueBox.FileMeta.Impl
+namespace BlueBox.FileMeta.Sql
 {
     using System;
     using System.Data;
     using System.Data.Common;
-    using BlueBox.FileMeta.Api;
     using BlueBox.FileMeta.Dto;
     using Microsoft.Extensions.Options;
     using MySql.Data.MySqlClient;
