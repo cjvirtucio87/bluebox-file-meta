@@ -14,14 +14,35 @@ namespace BlueBox.FileMeta.Sql
         /// <inheritxmldoc/>
         public void Create(File file, IDbConnection connection)
         {
+            using (var transaction = connection.BeginTransaction()) {
+                try {
+                    Create(file, connection, transaction);
+
+                    transaction.Commit();
+                } catch (Exception e) {
+                    transaction.Rollback();
+
+                    throw e;
+                }
+            }
+        }
+
+        /// <inheritxmldoc/>
+        public void Create(File file, IDbConnection connection, IDbTransaction transaction)
+        {
             if (file == null)
             {
                 throw new ArgumentException("File cannot be null");
             }
 
+            if (transaction == null) {
+                throw new ArgumentException("Transaction cannot be null");
+            }
+
             connection.Execute(
                 @"insert into file (Id) values (@Id);",
-                file
+                file,
+                transaction
             );
 
             foreach (var part in file.Parts) {
@@ -38,6 +59,24 @@ namespace BlueBox.FileMeta.Sql
 
         /// <inheritxmldoc/>
         public File Get(int fileId, IDbConnection connection)
+        {
+            using (var transaction = connection.BeginTransaction()) {
+                try {
+                    var resultfile = Get(fileId, connection, transaction);
+
+                    transaction.Commit();
+
+                    return resultfile;
+                } catch (Exception e) {
+                    transaction.Rollback();
+
+                    throw e;
+                }
+            }
+        }
+
+        /// <inheritxmldoc/>
+        public File Get(int fileId, IDbConnection connection, IDbTransaction transaction)
         {
             File resultFile = null;
             
@@ -59,7 +98,8 @@ namespace BlueBox.FileMeta.Sql
                 },
                 new {
                     @Id = fileId
-                }
+                },
+                transaction
             );
 
             return resultFile;

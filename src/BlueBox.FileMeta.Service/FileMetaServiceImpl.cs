@@ -42,7 +42,7 @@ namespace BlueBox.FileMeta.Service
                 {
                     try
                     {
-                        fileRepository.Create(file, connection);
+                        fileRepository.Create(file, connection, transaction);
 
                         transaction.Commit();
                     } catch (Exception e)

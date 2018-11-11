@@ -17,11 +17,29 @@ namespace BlueBox.FileMeta.Sql
         void Create(Dto.File file, IDbConnection connection);
 
         /// <summary>
+        /// Create a new <code>File</code> in the database.
+        /// </summary>
+        /// <param name="file">the file to persist</param>
+        /// <param name="connection">the connection to persist</param>
+        /// <param name="transaction">the transaction to associate the command with</param>
+
+        void Create(Dto.File file, IDbConnection connection, IDbTransaction transaction);
+
+        /// <summary>
         /// Retrieve a new <code>File</code> in the database.
         /// </summary>
         /// <param name="fileId">the identifier for the file to be retrieved</param>
         /// <param name="connection">the connection to leverage for persisting the information</param>
         /// <returns></returns>
         Dto.File Get(int fileId, IDbConnection connection);
+
+        /// <summary>
+        /// Retrieve a new <code>File</code> in the database.
+        /// </summary>
+        /// <param name="fileId">the identifier for the file to be retrieved</param>
+        /// <param name="connection">the connection to leverage for persisting the information</param>
+        /// <param name="transaction">the transaction to associate the command with</param>
+        /// <returns></returns>
+        Dto.File Get(int fileId, IDbConnection connection, IDbTransaction transaction);
     }
 }
