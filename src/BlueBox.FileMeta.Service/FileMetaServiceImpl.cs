@@ -49,7 +49,7 @@ namespace BlueBox.FileMeta.Service
                     {
                         transaction.Rollback();
 
-                        throw new Exception(e.Message);
+                        throw e;
                     }
                 }
             }
