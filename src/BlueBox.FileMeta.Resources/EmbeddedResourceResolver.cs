@@ -21,15 +21,15 @@ namespace BlueBox.FileMeta.Resources
         /// <inheritxmldoc/>
         public Stream GetStream(string resourcePath)
         {
-            // inspired by https://stackoverflow.com/a/27993476
-            var parsedResourcePath = resourcePath.Replace(@"/", ".");
-
             return assembly
                     .GetManifestResourceStream(
                         assembly
                             .GetManifestResourceNames()
                             .FirstOrDefault(
-                                resourceName => resourceName.Contains(parsedResourcePath)
+                                resourceName => resourceName.Contains(
+                                  // inspired by https://stackoverflow.com/a/27993476
+                                  resourcePath.Replace(@"/", ".")
+                                )
                             )
                     );
         }
