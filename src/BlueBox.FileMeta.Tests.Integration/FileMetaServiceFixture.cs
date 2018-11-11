@@ -11,14 +11,6 @@ namespace BlueBox.FileMeta.Tests.Integration
     using System.IO;
     using System.Reflection;
 
-    /// <summary>
-    /// <para>
-    /// Fixture class for the <code>FileMetaService</code> integration tests. 
-    /// </para>
-    /// <para>
-    /// All instances of the implementations retrieved from this class are shared. For instance, if test A calls <code>GetFooService()</code> from this fixture, and test B calls the same method, the two tests get the exact same instance in memory.
-    /// </para>
-    /// </summary>
     public class FileMetaServiceFixture : IDisposable
     {
         private readonly IServiceProvider serviceProvider;
@@ -26,9 +18,6 @@ namespace BlueBox.FileMeta.Tests.Integration
         private readonly IFileMetaDbFactory fileMetaDbFactory;
         private Dto.File file;
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
         public FileMetaServiceFixture()
         {
             serviceProvider = new ServiceCollection()
@@ -63,19 +52,11 @@ namespace BlueBox.FileMeta.Tests.Integration
             }
         }
 
-        /// <summary>
-        /// Retrieve an instance of the <code>IFileMetaService</code> implementation.
-        /// </summary>
-        /// <returns>an implementation of <code>IFileMetaService</code></returns>
         public IFileMetaService GetFileMetaService()
         {
             return serviceProvider.GetService<IFileMetaService>();
         }
 
-        /// <summary>
-        /// Get the <code>Dto.File</code> containing File metadata.
-        /// </summary>
-        /// <returns>a singleton instance of <code>Dto.File</code></returns>
         public Dto.File GetFile()
         {
             if (file == null)
@@ -105,19 +86,11 @@ namespace BlueBox.FileMeta.Tests.Integration
             return file;
         }
 
-        /// <summary>
-        /// Retrieve the file stream for an embedded SQL script.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns>the <code>Stream</code> for the embedded SQL script</returns>
         public Stream GetSqlScript(string name)
         {
             return embeddedResourceResolver.GetStream($"sql/{name}");
         }
 
-        /// <summary>
-        /// Dispose of the fixture.
-        /// </summary>
         public void Dispose()
         {
             using (var stream = embeddedResourceResolver.GetStream($"sql/cleanup.sql"))

@@ -6,10 +6,6 @@
     <Version Condition=" '$(BUILD_NUMBER)' != '' ">1.0.$(BUILD_NUMBER)</Version>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\BlueBox.FileMeta.Tests.Integration.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Include="appsettings.json" CopyToOutputDirectory="Always" />
     <EmbeddedResource Include="sql\**" />
