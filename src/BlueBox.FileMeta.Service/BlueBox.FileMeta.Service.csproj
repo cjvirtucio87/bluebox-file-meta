@@ -12,10 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.Tools" Version="1.16.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\BlueBox.FileMeta.Dto\BlueBox.FileMeta.Dto.csproj" />
     <ProjectReference Include="..\BlueBox.FileMeta.Sql\BlueBox.FileMeta.Sql.csproj" />
   </ItemGroup>
