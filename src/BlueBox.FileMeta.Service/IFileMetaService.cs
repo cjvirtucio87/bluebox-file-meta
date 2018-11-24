@@ -19,6 +19,7 @@ namespace BlueBox.FileMeta.Service
         /// Get a journal record representing a file and its part list.
         /// </para>
         /// </summary>
+        /// <returns>the <code>File</code> identified by <code>fileId</code></returns>
         Dto.File GetFileRecord(int fileId);
     }
 }

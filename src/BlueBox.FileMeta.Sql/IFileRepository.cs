@@ -28,7 +28,7 @@ namespace BlueBox.FileMeta.Sql
         /// Retrieve a new <code>File</code> in the database.
         /// </summary>
         /// <param name="fileId">the identifier for the file to be retrieved</param>
-        /// <returns></returns>
+        /// <returns>the <code>File</code> identified by <code>fileId</code></returns>
         Dto.File Get(int fileId);
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace BlueBox.FileMeta.Sql
         /// <param name="fileId">the identifier for the file to be retrieved</param>
         /// <param name="connection">the connection to leverage for persisting the information</param>
         /// <param name="transaction">the transaction to associate the command with</param>
-        /// <returns></returns>
+        /// <returns>the <code>File</code> identified by <code>fileId</code></returns>
         Dto.File Get(int fileId, IDbConnection connection, IDbTransaction transaction);
     }
 }
