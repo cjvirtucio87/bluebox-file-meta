@@ -39,7 +39,7 @@ namespace BlueBox.FileMeta.Tests.Integration
             embeddedResourceResolver = serviceProvider.GetService<IEmbeddedResourceResolver>();
             fileMetaDbFactory = serviceProvider.GetService<IFileMetaDbFactory>();
 
-            using (var stream = embeddedResourceResolver.GetStream($"sql/init.sql"))
+            using (var stream = embeddedResourceResolver.GetStream($"sql/mysql_init.sql"))
             using (var connection = fileMetaDbFactory.CreateConnection())
             {
                 connection.Open();
