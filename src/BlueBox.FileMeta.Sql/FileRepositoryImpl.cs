@@ -10,19 +10,36 @@ namespace BlueBox.FileMeta.Sql
     /// <inheritxmldoc/>
     public class FileRepositoryImpl : IFileRepository
     {
+        private readonly IFileMetaDbFactory fileMetaDbFactory;
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="fileMetaDbFactory"></param>
+        public FileRepositoryImpl(
+            IFileMetaDbFactory fileMetaDbFactory
+        ) {
+            this.fileMetaDbFactory = fileMetaDbFactory;
+        }
 
         /// <inheritxmldoc/>
-        public void Create(File file, IDbConnection connection)
+        public void Create(File file)
         {
-            using (var transaction = connection.BeginTransaction()) {
-                try {
-                    Create(file, connection, transaction);
+            using (var connection = fileMetaDbFactory.CreateConnection()) 
+            {
+                connection.Open();
 
-                    transaction.Commit();
-                } catch (Exception e) {
-                    transaction.Rollback();
+                using (var transaction = connection.BeginTransaction()) 
+                {
+                    try {
+                        Create(file, connection, transaction);
 
-                    throw e;
+                        transaction.Commit();
+                    } catch (Exception e) {
+                        transaction.Rollback();
+
+                        throw e;
+                    }
                 }
             }
         }
@@ -58,19 +75,25 @@ namespace BlueBox.FileMeta.Sql
         }
 
         /// <inheritxmldoc/>
-        public File Get(int fileId, IDbConnection connection)
+        public File Get(int fileId)
         {
-            using (var transaction = connection.BeginTransaction()) {
-                try {
-                    var resultfile = Get(fileId, connection, transaction);
+            using (var connection = fileMetaDbFactory.CreateConnection()) 
+            {
+                connection.Open();
 
-                    transaction.Commit();
+                using (var transaction = connection.BeginTransaction()) 
+                {
+                    try {
+                        var resultfile = Get(fileId, connection, transaction);
 
-                    return resultfile;
-                } catch (Exception e) {
-                    transaction.Rollback();
+                        transaction.Commit();
 
-                    throw e;
+                        return resultfile;
+                    } catch (Exception e) {
+                        transaction.Rollback();
+
+                        throw e;
+                    }
                 }
             }
         }

@@ -67,7 +67,7 @@ namespace BlueBox.FileMeta.Service
             {
                 connection.Open();
                         
-                return fileRepository.Get(fileId, connection);
+                return fileRepository.Get(fileId);
             }
         }
     }
