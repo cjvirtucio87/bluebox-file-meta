@@ -6,6 +6,7 @@ namespace BlueBox.FileMeta.Sql
     using System;
     using System.Data;
     using System.Linq;
+    using System.Collections.Generic;
 
     /// <inheritxmldoc/>
     public class FileRegistryImpl : IFileRegistry
@@ -76,8 +77,26 @@ namespace BlueBox.FileMeta.Sql
                 connection, 
                 transaction
             );
+        }
 
-            foreach (var part in file.Parts) {
+        /// <inheritdoc/>
+        public void RegisterParts(int fileId, IEnumerable<Part> parts)
+        {
+            using (var connection = fileMetaDbFactory.CreateConnection())
+            {
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                    transaction.Commit();
+                }
+            }
+        }
+
+        /// <inheritdoc/>
+        public void RegisterParts(int fileId, IEnumerable<Part> parts, IDbConnection connection, IDbTransaction transaction)
+        {
+            foreach (var part in parts) {
                 var partNextId = NextId(
                     "part",
                     connection,
@@ -88,7 +107,7 @@ namespace BlueBox.FileMeta.Sql
                     @"insert into part (Id, FileId, BlockId) values (@Id, @FileId, @BlockId)",
                     new {
                         Id = partNextId,
-                        FileId = fileNextId,
+                        FileId = fileId,
                         BlockId = part.BlockId
                     }
                 );

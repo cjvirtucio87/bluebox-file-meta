@@ -1,5 +1,6 @@
 namespace BlueBox.FileMeta.Sql
 {
+    using System.Collections.Generic;
     using System.Data;
 
     /// <summary>
@@ -23,6 +24,22 @@ namespace BlueBox.FileMeta.Sql
         /// <param name="transaction">the transaction to associate the command with</param>
 
         void RegisterFile(Dto.File file, IDbConnection connection, IDbTransaction transaction);
+
+        /// <summary>
+        /// Register parts for a specific <code>File</code> in the database.
+        /// </summary>
+        /// <param name="fileId">the file that the parts will be mapped to</param>
+        /// <param name="parts">the parts to be registered</param>
+        void RegisterParts(int fileId, IEnumerable<Dto.Part> parts);
+
+        /// <summary>
+        /// Register parts for a specific <code>File</code> in the database.
+        /// </summary>
+        /// <param name="fileId">the file that the parts will be mapped to</param>
+        /// <param name="parts">the parts to be registered</param>
+        /// <param name="connection">the connection to persist</param>
+        /// <param name="transaction">the transaction to associate the command with</param>
+        void RegisterParts(int fileId, IEnumerable<Dto.Part> parts, IDbConnection connection, IDbTransaction transaction);
 
         /// <summary>
         /// Retrieve a new <code>File</code> in the database.

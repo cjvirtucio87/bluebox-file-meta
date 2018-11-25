@@ -48,6 +48,13 @@ namespace BlueBox.FileMeta.Service
                             transaction
                         );
 
+                        fileRepository.RegisterParts(
+                            file.Id,
+                            file.Parts,
+                            connection,
+                            transaction
+                        );
+
                         transaction.Commit();
                     } catch (Exception e)
                     {
