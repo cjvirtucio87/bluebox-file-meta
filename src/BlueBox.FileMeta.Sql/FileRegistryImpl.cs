@@ -61,15 +61,9 @@ namespace BlueBox.FileMeta.Sql
 
                 using (var transaction = connection.BeginTransaction()) 
                 {
-                    try {
-                        RegisterFile(file, connection, transaction);
+                    RegisterFile(file, connection, transaction);
 
-                        transaction.Commit();
-                    } catch (Exception e) {
-                        transaction.Rollback();
-
-                        throw e;
-                    }
+                    transaction.Commit();
                 }
             }
         }
@@ -160,21 +154,15 @@ namespace BlueBox.FileMeta.Sql
 
                 using (var transaction = connection.BeginTransaction()) 
                 {
-                    try {
-                        var resultfile = GetFile(
-                            fileId, 
-                            connection, 
-                            transaction
-                        );
+                    var resultfile = GetFile(
+                        fileId, 
+                        connection, 
+                        transaction
+                    );
 
-                        transaction.Commit();
+                    transaction.Commit();
 
-                        return resultfile;
-                    } catch (Exception e) {
-                        transaction.Rollback();
-
-                        throw e;
-                    }
+                    return resultfile;
                 }
             }
         }
