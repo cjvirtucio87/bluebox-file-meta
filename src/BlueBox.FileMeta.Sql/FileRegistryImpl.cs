@@ -138,7 +138,8 @@ namespace BlueBox.FileMeta.Sql
                         Id = partNextId,
                         FileId = fileId,
                         BlockId = part.BlockId
-                    }
+                    },
+                    transaction
                 );
 
                 UpdateNextId(
