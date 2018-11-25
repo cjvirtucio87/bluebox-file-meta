@@ -179,13 +179,14 @@ namespace BlueBox.FileMeta.Sql
         {
             File resultFile = null;
             
-            connection.Query<File, Part, File>(
-                string.Join(
-                    "\n",
-                    "select * ",
-                    "from file join part on part.FileId = file.Id ",
-                    "where file.id = @Id;"
-                ),
+            connection.Query<File, Part, File>(@"
+                select
+                    *
+                from 
+                    file join part on part.FileId = file.Id
+                where 
+                    file.id = @Id
+                ",
                 (file, part) => {
                     if (resultFile == null) {
                         resultFile = file;
