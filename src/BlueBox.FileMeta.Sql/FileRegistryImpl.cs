@@ -8,7 +8,7 @@ namespace BlueBox.FileMeta.Sql
     using System.Linq;
 
     /// <inheritxmldoc/>
-    public class FileRepositoryImpl : IFileRepository
+    public class FileRegistryImpl : IFileRegistry
     {
         private readonly IFileMetaDbFactory fileMetaDbFactory;
         
@@ -16,14 +16,14 @@ namespace BlueBox.FileMeta.Sql
         /// Constructor
         /// </summary>
         /// <param name="fileMetaDbFactory"></param>
-        public FileRepositoryImpl(
+        public FileRegistryImpl(
             IFileMetaDbFactory fileMetaDbFactory
         ) {
             this.fileMetaDbFactory = fileMetaDbFactory;
         }
 
         /// <inheritxmldoc/>
-        public void Create(File file)
+        public void RegisterFile(File file)
         {
             using (var connection = fileMetaDbFactory.CreateConnection()) 
             {
@@ -32,7 +32,7 @@ namespace BlueBox.FileMeta.Sql
                 using (var transaction = connection.BeginTransaction()) 
                 {
                     try {
-                        Create(file, connection, transaction);
+                        RegisterFile(file, connection, transaction);
 
                         transaction.Commit();
                     } catch (Exception e) {
@@ -45,7 +45,7 @@ namespace BlueBox.FileMeta.Sql
         }
 
         /// <inheritxmldoc/>
-        public void Create(File file, IDbConnection connection, IDbTransaction transaction)
+        public void RegisterFile(File file, IDbConnection connection, IDbTransaction transaction)
         {
             if (file == null)
             {
@@ -103,7 +103,7 @@ namespace BlueBox.FileMeta.Sql
         }
 
         /// <inheritxmldoc/>
-        public File Get(int fileId)
+        public File GetFile(int fileId)
         {
             using (var connection = fileMetaDbFactory.CreateConnection()) 
             {
@@ -112,7 +112,7 @@ namespace BlueBox.FileMeta.Sql
                 using (var transaction = connection.BeginTransaction()) 
                 {
                     try {
-                        var resultfile = Get(fileId, connection, transaction);
+                        var resultfile = GetFile(fileId, connection, transaction);
 
                         transaction.Commit();
 
@@ -127,7 +127,7 @@ namespace BlueBox.FileMeta.Sql
         }
 
         /// <inheritxmldoc/>
-        public File Get(int fileId, IDbConnection connection, IDbTransaction transaction)
+        public File GetFile(int fileId, IDbConnection connection, IDbTransaction transaction)
         {
             File resultFile = null;
             

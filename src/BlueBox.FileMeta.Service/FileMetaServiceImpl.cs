@@ -10,7 +10,7 @@ namespace BlueBox.FileMeta.Service
     public class FileMetaServiceImpl : IFileMetaService
     {
         private readonly IFileMetaDbFactory fileMetaDbFactory;
-        private readonly IFileRepository fileRepository;
+        private readonly IFileRegistry fileRepository;
 
         /// <summary>
         /// Constructor.
@@ -19,7 +19,7 @@ namespace BlueBox.FileMeta.Service
         /// <param name="fileRepository">the domain repository for interacting with the databse for <code>File</code> information</param>
         public FileMetaServiceImpl(
             IFileMetaDbFactory fileMetaDbFactory,
-            IFileRepository fileRepository
+            IFileRegistry fileRepository
         )
         {
             this.fileMetaDbFactory = fileMetaDbFactory;
@@ -42,7 +42,7 @@ namespace BlueBox.FileMeta.Service
                 {
                     try
                     {
-                        fileRepository.Create(
+                        fileRepository.RegisterFile(
                             file, 
                             connection, 
                             transaction
@@ -71,7 +71,7 @@ namespace BlueBox.FileMeta.Service
             {
                 connection.Open();
                         
-                return fileRepository.Get(fileId);
+                return fileRepository.GetFile(fileId);
             }
         }
     }

@@ -32,7 +32,7 @@ namespace BlueBox.FileMeta.Tests.Integration
                 .AddSingleton(Assembly.GetExecutingAssembly())
                 .AddSingleton<IEmbeddedResourceResolver, EmbeddedResourceResolver>()
                 .AddSingleton<IFileMetaDbFactory, FileMetaDbFactoryImpl>()
-                .AddSingleton<IFileRepository, FileRepositoryImpl>()
+                .AddSingleton<IFileRegistry, FileRegistryImpl>()
                 .AddSingleton<IFileMetaService, FileMetaServiceImpl>()
                 .BuildServiceProvider();
 

@@ -6,30 +6,30 @@ namespace BlueBox.FileMeta.Sql
     /// <para>Domain object for persisting/retrieving <code>File</code> information.</para>
     /// <para>If the method takes an instance of <code>IDbConnection</code>, then the connection is assumed to be open.</para>
     /// </summary>
-    public interface IFileRepository
+    public interface IFileRegistry
     {
         /// <summary>
-        /// Create a new <code>File</code> in the database.
+        /// Register a new <code>File</code> in the database.
         /// </summary>
         /// <param name="file">the file to persist</param>
 
-        void Create(Dto.File file);
+        void RegisterFile(Dto.File file);
 
         /// <summary>
-        /// Create a new <code>File</code> in the database.
+        /// Register a new <code>File</code> in the database.
         /// </summary>
         /// <param name="file">the file to persist</param>
         /// <param name="connection">the connection to persist</param>
         /// <param name="transaction">the transaction to associate the command with</param>
 
-        void Create(Dto.File file, IDbConnection connection, IDbTransaction transaction);
+        void RegisterFile(Dto.File file, IDbConnection connection, IDbTransaction transaction);
 
         /// <summary>
         /// Retrieve a new <code>File</code> in the database.
         /// </summary>
         /// <param name="fileId">the identifier for the file to be retrieved</param>
         /// <returns>the <code>File</code> identified by <code>fileId</code></returns>
-        Dto.File Get(int fileId);
+        Dto.File GetFile(int fileId);
 
         /// <summary>
         /// Retrieve a new <code>File</code> in the database.
@@ -38,6 +38,6 @@ namespace BlueBox.FileMeta.Sql
         /// <param name="connection">the connection to leverage for persisting the information</param>
         /// <param name="transaction">the transaction to associate the command with</param>
         /// <returns>the <code>File</code> identified by <code>fileId</code></returns>
-        Dto.File Get(int fileId, IDbConnection connection, IDbTransaction transaction);
+        Dto.File GetFile(int fileId, IDbConnection connection, IDbTransaction transaction);
     }
 }
