@@ -10,6 +10,22 @@ namespace BlueBox.FileMeta.Sql
     public interface IFileRegistry
     {
         /// <summary>
+        /// Retrieve a new <code>File</code> in the database.
+        /// </summary>
+        /// <param name="fileId">the identifier for the file to be retrieved</param>
+        /// <returns>the <code>File</code> identified by <code>fileId</code></returns>
+        Dto.File GetFile(int fileId);
+
+        /// <summary>
+        /// Retrieve a new <code>File</code> in the database.
+        /// </summary>
+        /// <param name="fileId">the identifier for the file to be retrieved</param>
+        /// <param name="connection">the connection to leverage for persisting the information</param>
+        /// <param name="transaction">the transaction to associate the command with</param>
+        /// <returns>the <code>File</code> identified by <code>fileId</code></returns>
+        Dto.File GetFile(int fileId, IDbConnection connection, IDbTransaction transaction);
+
+        /// <summary>
         /// Retrieve the last registered <code>Dto.File</code>.
         /// </summary>
         /// <returns>the last registered <code>Dto.File</code></returns>
@@ -54,21 +70,5 @@ namespace BlueBox.FileMeta.Sql
         /// <param name="connection">the connection to persist</param>
         /// <param name="transaction">the transaction to associate the command with</param>
         void RegisterParts(int fileId, IEnumerable<Dto.Part> parts, IDbConnection connection, IDbTransaction transaction);
-
-        /// <summary>
-        /// Retrieve a new <code>File</code> in the database.
-        /// </summary>
-        /// <param name="fileId">the identifier for the file to be retrieved</param>
-        /// <returns>the <code>File</code> identified by <code>fileId</code></returns>
-        Dto.File GetFile(int fileId);
-
-        /// <summary>
-        /// Retrieve a new <code>File</code> in the database.
-        /// </summary>
-        /// <param name="fileId">the identifier for the file to be retrieved</param>
-        /// <param name="connection">the connection to leverage for persisting the information</param>
-        /// <param name="transaction">the transaction to associate the command with</param>
-        /// <returns>the <code>File</code> identified by <code>fileId</code></returns>
-        Dto.File GetFile(int fileId, IDbConnection connection, IDbTransaction transaction);
     }
 }

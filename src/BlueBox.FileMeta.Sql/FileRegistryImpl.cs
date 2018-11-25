@@ -23,6 +23,59 @@ namespace BlueBox.FileMeta.Sql
             this.fileMetaDbFactory = fileMetaDbFactory;
         }
 
+        /// <inheritxmldoc/>
+        public File GetFile(int fileId)
+        {
+            using (var connection = fileMetaDbFactory.CreateConnection()) 
+            {
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction()) 
+                {
+                    var resultfile = GetFile(
+                        fileId, 
+                        connection, 
+                        transaction
+                    );
+
+                    transaction.Commit();
+
+                    return resultfile;
+                }
+            }
+        }
+
+        /// <inheritxmldoc/>
+        public File GetFile(int fileId, IDbConnection connection, IDbTransaction transaction)
+        {
+            File resultFile = null;
+            
+            connection.Query<File, Part, File>(@"
+                select
+                    *
+                from 
+                    file join part on part.FileId = file.Id
+                where 
+                    file.id = @Id
+                ",
+                (file, part) => {
+                    if (resultFile == null) {
+                        resultFile = file;
+                    }
+
+                    resultFile.Parts.Add(part);
+
+                    return file;
+                },
+                new {
+                    @Id = fileId
+                },
+                transaction
+            );
+
+            return resultFile;
+        }
+
         /// <inheritdoc/>
         public Dto.File LastFile()
         {
@@ -139,59 +192,6 @@ namespace BlueBox.FileMeta.Sql
                     transaction
                 );
             }
-        }
-
-        /// <inheritxmldoc/>
-        public File GetFile(int fileId)
-        {
-            using (var connection = fileMetaDbFactory.CreateConnection()) 
-            {
-                connection.Open();
-
-                using (var transaction = connection.BeginTransaction()) 
-                {
-                    var resultfile = GetFile(
-                        fileId, 
-                        connection, 
-                        transaction
-                    );
-
-                    transaction.Commit();
-
-                    return resultfile;
-                }
-            }
-        }
-
-        /// <inheritxmldoc/>
-        public File GetFile(int fileId, IDbConnection connection, IDbTransaction transaction)
-        {
-            File resultFile = null;
-            
-            connection.Query<File, Part, File>(@"
-                select
-                    *
-                from 
-                    file join part on part.FileId = file.Id
-                where 
-                    file.id = @Id
-                ",
-                (file, part) => {
-                    if (resultFile == null) {
-                        resultFile = file;
-                    }
-
-                    resultFile.Parts.Add(part);
-
-                    return file;
-                },
-                new {
-                    @Id = fileId
-                },
-                transaction
-            );
-
-            return resultFile;
         }
 
         /// <inheritdoc/>
