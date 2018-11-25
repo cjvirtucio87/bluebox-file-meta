@@ -56,20 +56,48 @@ namespace BlueBox.FileMeta.Sql
                 throw new ArgumentException("Transaction cannot be null");
             }
 
+            var fileNextId = NextId(
+                "file",
+                connection, 
+                transaction
+            );
+
+            file.Id = fileNextId;
+
             connection.Execute(
                 @"insert into file (Id) values (@Id);",
                 file,
                 transaction
             );
 
+            UpdateNextId(
+                fileNextId + 1,
+                "file",
+                connection, 
+                transaction
+            );
+
             foreach (var part in file.Parts) {
+                var partNextId = NextId(
+                    "part",
+                    connection,
+                    transaction
+                );
+
                 connection.Execute(
                     @"insert into part (Id, FileId, BlockId) values (@Id, @FileId, @BlockId)",
                     new {
-                        Id = part.Id,
-                        FileId = file.Id,
+                        Id = partNextId,
+                        FileId = fileNextId,
                         BlockId = part.BlockId
                     }
+                );
+
+                UpdateNextId(
+                    partNextId + 1,
+                    "part",
+                    connection, 
+                    transaction
                 );
             }
         }
@@ -126,6 +154,29 @@ namespace BlueBox.FileMeta.Sql
             );
 
             return resultFile;
+        }
+
+        /// <inheritdoc/>
+        private void UpdateNextId(int nextId, string tableName, IDbConnection connection, IDbTransaction transaction)
+        {
+            connection.Execute(
+                "update counters set next_id = @NextId where table_name = @TableName",
+                new {
+                    NextId = nextId,
+                    TableName = tableName
+                }
+            );
+        }
+
+        /// <inheritdoc/>
+        private int NextId(string tableName, IDbConnection connection, IDbTransaction transaction) 
+        {
+            return connection.QueryFirst<int>(
+                "select next_id from counters where table_name = @TableName",
+                new {
+                    TableName = tableName
+                }
+            );
         }
     }
 }

@@ -18,3 +18,19 @@ CREATE TABLE part (
         ON DELETE CASCADE,
     BlockId VARCHAR(255)
 );
+
+INSERT INTO counters(
+  next_id,
+  table_name
+) VALUES (
+  1,
+  'file'
+);
+
+INSERT INTO counters(
+  next_id,
+  table_name
+) VALUES (
+  1,
+  'part'
+);
