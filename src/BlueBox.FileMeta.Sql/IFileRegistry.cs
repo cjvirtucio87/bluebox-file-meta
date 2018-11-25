@@ -10,6 +10,20 @@ namespace BlueBox.FileMeta.Sql
     public interface IFileRegistry
     {
         /// <summary>
+        /// Retrieve the last registered <code>Dto.File</code>.
+        /// </summary>
+        /// <returns>the last registered <code>Dto.File</code></returns>
+        Dto.File LastFile();
+
+        /// <summary>
+        /// Retrieve the last registered <code>Dto.File</code>.
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns>the last registered <code>Dto.File</code></returns>
+        Dto.File LastFile(IDbConnection connection, IDbTransaction transaction);
+
+        /// <summary>
         /// Register a new <code>File</code> in the database.
         /// </summary>
         /// <param name="file">the file to persist</param>

@@ -23,6 +23,35 @@ namespace BlueBox.FileMeta.Sql
             this.fileMetaDbFactory = fileMetaDbFactory;
         }
 
+        /// <inheritdoc/>
+        public Dto.File LastFile()
+        {
+            using (var connection = fileMetaDbFactory.CreateConnection()) 
+            {
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                    var lastFile = LastFile(
+                        connection,
+                        transaction
+                    );
+
+                    transaction.Commit();
+
+                    return lastFile;
+                }
+            }
+        }
+
+        /// <inheritdoc/>
+        public Dto.File LastFile(IDbConnection connection, IDbTransaction transaction)
+        {
+            return connection.QueryFirst<Dto.File>(
+                "select * from file order by id desc"
+            );
+        }
+
         /// <inheritxmldoc/>
         public void RegisterFile(File file)
         {
@@ -63,11 +92,11 @@ namespace BlueBox.FileMeta.Sql
                 transaction
             );
 
-            file.Id = fileNextId;
-
             connection.Execute(
                 @"insert into file (Id) values (@Id);",
-                file,
+                new {
+                    Id = fileNextId
+                },
                 transaction
             );
 
