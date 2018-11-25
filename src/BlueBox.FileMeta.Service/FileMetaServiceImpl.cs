@@ -49,7 +49,10 @@ namespace BlueBox.FileMeta.Service
                         );
 
                         fileRepository.RegisterParts(
-                            file.Id,
+                            fileRepository.LastFile(
+                                connection,
+                                transaction
+                            ).Id,
                             file.Parts,
                             connection,
                             transaction
