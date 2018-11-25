@@ -1,4 +1,5 @@
 syntax = "proto3";
+package blue_box.file_meta.grpc;
 
 // Request for metadata about a file with a given ID.
 message FileRequest {
