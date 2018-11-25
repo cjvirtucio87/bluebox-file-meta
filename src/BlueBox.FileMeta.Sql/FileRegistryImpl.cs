@@ -116,7 +116,11 @@ namespace BlueBox.FileMeta.Sql
 
                 using (var transaction = connection.BeginTransaction()) 
                 {
-                    RegisterFile(file, connection, transaction);
+                    RegisterFile(
+                        file, 
+                        connection, 
+                        transaction
+                    );
 
                     transaction.Commit();
                 }
