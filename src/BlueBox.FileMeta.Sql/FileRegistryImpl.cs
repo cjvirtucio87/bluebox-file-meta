@@ -76,10 +76,6 @@ namespace BlueBox.FileMeta.Sql
                 throw new ArgumentException("File cannot be null");
             }
 
-            if (transaction == null) {
-                throw new ArgumentException("Transaction cannot be null");
-            }
-
             var fileNextId = NextId(
                 "file",
                 connection, 
