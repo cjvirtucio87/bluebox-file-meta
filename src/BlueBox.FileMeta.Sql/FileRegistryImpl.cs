@@ -217,8 +217,9 @@ namespace BlueBox.FileMeta.Sql
                 "update counters set next_id = @NextId where table_name = @TableName",
                 new {
                     NextId = nextId,
-                    TableName = tableName
-                }
+                    TableName = tableName,
+                },
+                transaction
             );
         }
 
@@ -229,7 +230,8 @@ namespace BlueBox.FileMeta.Sql
                 "select next_id from counters where table_name = @TableName",
                 new {
                     TableName = tableName
-                }
+                },
+                transaction
             );
         }
     }
