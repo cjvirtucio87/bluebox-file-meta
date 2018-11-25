@@ -77,12 +77,7 @@ namespace BlueBox.FileMeta.Service
                 throw new ArgumentException("File argument must not be null");
             }
 
-            using (var connection = fileMetaDbFactory.CreateConnection())
-            {
-                connection.Open();
-                        
-                return fileRepository.GetFile(fileId);
-            }
+            return fileRepository.GetFile(fileId);
         }
     }
 }
