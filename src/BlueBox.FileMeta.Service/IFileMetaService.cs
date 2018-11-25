@@ -12,7 +12,8 @@ namespace BlueBox.FileMeta.Service
         /// Create a journal record representing a file and its part list.
         /// </para>
         /// </summary>
-        void CreateFileRecord(Dto.File file);
+        /// <returns>the identifier of the file record that was created</returns>
+        int CreateFileRecord(Dto.File file);
 
         /// <summary>
         /// <para>

@@ -27,7 +27,7 @@ namespace BlueBox.FileMeta.Service
         }
 
         /// <inheritxmldoc/>
-        public void CreateFileRecord(File file)
+        public int CreateFileRecord(File file)
         {
             if (file == null)
             {
@@ -46,17 +46,21 @@ namespace BlueBox.FileMeta.Service
                         transaction
                     );
 
+                    var newFileId = fileRepository.LastFile(
+                        connection,
+                        transaction
+                    ).Id;
+
                     fileRepository.RegisterParts(
-                        fileRepository.LastFile(
-                            connection,
-                            transaction
-                        ).Id,
+                        newFileId,
                         file.Parts,
                         connection,
                         transaction
                     );
 
                     transaction.Commit();
+
+                    return newFileId;
                 }
             }
         }
