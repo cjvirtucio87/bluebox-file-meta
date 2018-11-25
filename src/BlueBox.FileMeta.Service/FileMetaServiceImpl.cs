@@ -40,31 +40,23 @@ namespace BlueBox.FileMeta.Service
 
                 using (var transaction = connection.BeginTransaction())
                 {
-                    try
-                    {
-                        fileRepository.RegisterFile(
-                            file, 
-                            connection, 
-                            transaction
-                        );
+                    fileRepository.RegisterFile(
+                        file, 
+                        connection, 
+                        transaction
+                    );
 
-                        fileRepository.RegisterParts(
-                            fileRepository.LastFile(
-                                connection,
-                                transaction
-                            ).Id,
-                            file.Parts,
+                    fileRepository.RegisterParts(
+                        fileRepository.LastFile(
                             connection,
                             transaction
-                        );
+                        ).Id,
+                        file.Parts,
+                        connection,
+                        transaction
+                    );
 
-                        transaction.Commit();
-                    } catch (Exception e)
-                    {
-                        transaction.Rollback();
-
-                        throw e;
-                    }
+                    transaction.Commit();
                 }
             }
         }
