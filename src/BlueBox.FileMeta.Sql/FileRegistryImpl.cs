@@ -101,7 +101,9 @@ namespace BlueBox.FileMeta.Sql
         public Dto.File LastFile(IDbConnection connection, IDbTransaction transaction)
         {
             return connection.QueryFirst<Dto.File>(
-                "select * from file order by id desc"
+                "select * from file order by id desc",
+                new {},
+                transaction
             );
         }
 
