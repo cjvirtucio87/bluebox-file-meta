@@ -27,10 +27,8 @@ namespace BlueBox.FileMeta.Tests.Integration
             [Fact]
             public void ShouldCreateFileRecord()
             {
-                var newFileId = fileMetaService.CreateFileRecord(file);
-
                 var actualParts = fileMetaService.GetFileRecord(
-                    newFileId
+                    fileMetaService.CreateFileRecord(file)
                 ).Parts;
 
                 for (var i = 0; i < file.Parts.Count; i++) {
