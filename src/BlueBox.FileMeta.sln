@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueBox.FileMeta.Tests.Inte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueBox.FileMeta", "BlueBox.FileMeta\BlueBox.FileMeta.csproj", "{AFF52FD8-9F5B-4289-880F-6AC23389109F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueBox.FileMeta.Grpc", "BlueBox.FileMeta.Grpc\BlueBox.FileMeta.Grpc.csproj", "{2B78C8AD-123E-4992-B235-6BA1715B604B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AFF52FD8-9F5B-4289-880F-6AC23389109F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFF52FD8-9F5B-4289-880F-6AC23389109F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFF52FD8-9F5B-4289-880F-6AC23389109F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B78C8AD-123E-4992-B235-6BA1715B604B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B78C8AD-123E-4992-B235-6BA1715B604B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B78C8AD-123E-4992-B235-6BA1715B604B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B78C8AD-123E-4992-B235-6BA1715B604B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
